@@ -86,7 +86,7 @@ export default function App() {
               </div>
               <div>
                 <h1 className="text-gray-100 text-xl md:text-2xl font-mono tracking-tight">
-                  privacy-sanitizer
+                  AI privacy-sanitizer
                 </h1>
                 <p className="text-gray-500 text-xs md:text-sm font-mono">v2.1.0 | Open Source PII Detection Engine</p>
               </div>
@@ -183,9 +183,18 @@ export default function App() {
         </div>
 
         {/* Footer */}
-        <div className="text-center mt-8 text-sm text-gray-400 flex items-center justify-center gap-2 bg-slate-800/50 rounded-full px-6 py-3 border border-slate-700">
+        <div className="text-center mt-8 text-sm text-gray-400 flex flex-wrap items-center justify-center gap-2 bg-slate-800/50 rounded-full px-6 py-3 border border-slate-700">
           <Lock className="w-4 h-4" />
           <span>All processing happens locally in your browser</span>
+          <span className="text-gray-600">|</span>
+          <a
+            href="https://github.com/valeriyc/AIPrivacySanitizer"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors"
+          >
+            GitHub project
+          </a>
         </div>
       </div>
     </div>
