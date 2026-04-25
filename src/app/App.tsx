@@ -130,7 +130,7 @@ export default function App() {
                 <h1 className="text-gray-100 text-xl md:text-2xl font-mono tracking-tight">
                   AI privacy-sanitizer
                 </h1>
-                <p className="text-gray-500 text-xs md:text-sm font-mono">v0.1.0 | Open Source Privacy Filtering Engine for AI/LLM prompts</p>
+                <p className="text-gray-500 text-xs md:text-sm font-mono">v0.1.0 | Open Source Privacy Filter Engine for AI/LLM prompts</p>
               </div>
             </div>
           </div>

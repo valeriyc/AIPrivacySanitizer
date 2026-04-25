@@ -2,8 +2,14 @@
 
 Public URL: <https://valeriyc.github.io/AIPrivacySanitizer/>
 
-![AI Privacy Sanitizer UI](public/image.png)
+## Usage instructions
 
+1. Put your LLM prompt containing sensitive data into "Input Text" and copy "Sanitized Output" to the LLM:
+![AI Privacy Sanitizer UI](public/image.png)
+Adjust Sanitization Strength / Privacy Filters if needed.
+
+2. Put LLM output into De-sanitizer tab - "De-sanitizer Input" and get "De-sanitazed output": 
+![AI Privacy Sanitizer UI](public/image2.png)
 
 
 This is a code bundle for AI Privacy Sanitizer App. The original project is available at <https://www.figma.com/design/5GxbaLCLYEF21DNsubQ6SN/AI-Privacy-Sanitizer-App>.
