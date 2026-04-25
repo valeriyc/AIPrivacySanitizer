@@ -1,0 +1,14 @@
+# AI Privacy Sanitizer
+
+AI Privacy Sanitizer is a browser-based tool for LLM text sanitization and prompt safety.
+
+Keywords:
+- AI privacy filter
+- LLM filter privacy data
+- LLM filter sensitive data
+- LLM text sanitization
+- sanitize AI prompt
+- sanitize LLM prompt
+
+Primary URL:
+- https://valeriyc.github.io/AIPrivacySanitizer/
