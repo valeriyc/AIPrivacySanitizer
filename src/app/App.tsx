@@ -24,14 +24,14 @@ const piiConfig: PIIConfig = {
   passwords: { label: 'Passwords', pattern: /(?:password|pwd|pass)\s*[:=]\s*\S+/gi, placeholder: '[PASSWORD_REDACTED]', minStrength: 0 },
   creditCards: { label: 'Credit Cards', pattern: /\b\d{4}[-\s]?\d{4}[-\s]?\d{4}[-\s]?\d{4}\b/g, placeholder: '[CARD_****]', minStrength: 0 },
   ssn: { label: 'SSN', pattern: /\b\d{3}-\d{2}-\d{4}\b/g, placeholder: '[SSN_***]', minStrength: 0 },
-  moneyAmounts: { label: 'Money Amounts', pattern: /(?<!\w)(?:[$€£¥]\s?\d{1,3}(?:,\d{3})*(?:\.\d{2})?|\d+(?:,\d{3})*(?:\.\d{2})?\s?(?:USD|EUR|GBP|JPY))(?!\w)/gi, placeholder: '[MONEY]', minStrength: 20 },
+  moneyAmounts: { label: 'Money Amounts', pattern: /(?<!\w)(?:[$€£¥]\s?\d{1,3}(?:,\d{3})*(?:\.\d{2})?|\d+(?:,\d{3})*(?:\.\d{2})?\s?(?:USD|EUR|GBP|JPY|UAH|грн|гривні|гривень))(?!\w)/giu, placeholder: '[MONEY]', minStrength: 20 },
   addresses: { label: 'Addresses', pattern: /\b\d{1,6}\s+[A-Za-z0-9.'-]+(?:\s+[A-Za-z0-9.'-]+){0,5}\s+(?:street|st\.?|avenue|ave\.?|road|rd\.?|boulevard|blvd\.?|lane|ln\.?|drive|dr\.?|court|ct\.?|circle|cir\.?|way)\b/gi, placeholder: '[ADDRESS]', minStrength: 30 },
   emails: { label: 'Email Addresses', pattern: /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g, placeholder: '[EMAIL]', minStrength: 50 },
   phones: { label: 'Phone Numbers', pattern: /(?:\+?1[-.\s\u2013\u2014]?)?\(?\d{3}\)?[-.\s\u2013\u2014]?\d{3}[-.\s\u2013\u2014]?\d{4}\b/g, placeholder: '[PHONE]', minStrength: 50 },
   dates: { label: 'Dates', pattern: /\b\d{1,2}[/-]\d{1,2}[/-]\d{2,4}\b/g, placeholder: '[DATE]', minStrength: 70 },
   urls: { label: 'URLs', pattern: /https?:\/\/[^\s]+/gi, placeholder: '[URL]', minStrength: 70 },
   ipAddresses: { label: 'IP Addresses', pattern: /\b(?:\d{1,3}\.){3}\d{1,3}\b/g, placeholder: '[IP]', minStrength: 80 },
-  names: { label: 'Person Names', pattern: /\b(?!Hi\b|Hello\b|Hey\b|Greetings\b|Dear\b)[A-Z][a-z]+(?:\s+[A-Z][a-z]+)+\b/g, placeholder: '[NAME]', minStrength: 50 },
+  names: { label: 'Person Names', pattern: /(?<!\p{L})(?!(?:Hi|Hello|Hey|Greetings|Dear|Вітаю)\s)(?:\p{Lu}\p{L}+(?:[-'’]\p{L}+)?)(?:\s+\p{Lu}\p{L}+(?:[-'’]\p{L}+)?){1,}(?!\p{L})/gu, placeholder: '[NAME]', minStrength: 50 },
   numbers: { label: 'All Numbers', pattern: /\b\d{3,}\b/g, placeholder: '[NUM]', minStrength: 95 },
 };
 
@@ -79,7 +79,7 @@ export default function App() {
 
     if (enabledTypes.names) {
       // Catch greeting-based single names like "Hi John" that are not matched by full-name patterns.
-      sanitized = sanitized.replace(/\b(Hi|Hello|Hey|Greetings|Dear)\s+([A-Z][a-z]+)\b/g, (_, greeting: string, name: string) => {
+      sanitized = sanitized.replace(/\b(Hi|Hello|Hey|Greetings|Dear|Вітаю)\s+(\p{Lu}\p{Ll}+(?:[-'’]\p{L}+)?)\b/gu, (_, greeting: string, name: string) => {
         const token = `[NAME_${tokenCounter}]`;
         tokenCounter += 1;
         replacements.push({ token, originalValue: name });
